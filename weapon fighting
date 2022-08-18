@@ -1,0 +1,210 @@
+--// Decompiled Code. 
+--SCRIPT
+_G.farmNearest = false
+_G.farmHighest = false
+_G.farmLowest = false
+_G.autoCollect = false
+
+local plr = game.Players.LocalPlayer.Character.HumanoidRootPart
+
+function getHighest()
+    local high = {}
+    for i, v in pairs(game:GetService("Workspace").Fight.Chests:GetChildren()) do
+        for a, b in pairs(game:GetService("Workspace").Fight.ClientChests:GetChildren()) do
+            if v.Name == b.Name then
+                table.insert(high,v.ChestHp.Value)
+                table.sort(high, function(a,b) return a > b end)
+            end
+        end
+    end
+
+    for a, b in pairs(game:GetService("Workspace").Fight.Chests:GetChildren()) do
+        if high[1] == b.ChestHp.Value then
+            return b.Name
+        end
+    end    
+end
+
+function getLowest()
+    local low = {}
+    for i, v in pairs(game:GetService("Workspace").Fight.Chests:GetChildren()) do
+        for a, b in pairs(game:GetService("Workspace").Fight.ClientChests:GetChildren()) do
+            if v.Name == b.Name then
+                table.insert(low,v.ChestHp.Value)
+                table.sort(low, function(a,b) return a < b end)
+            end
+        end
+    end
+
+    for a, b in pairs(game:GetService("Workspace").Fight.Chests:GetChildren()) do
+        if low[1] == b.ChestHp.Value then
+            return b.Name
+        end
+    end    
+end
+
+function getNear()
+    local near;
+    local nearr = math.huge
+
+    for i, v in pairs(game:GetService("Workspace").Fight.ClientChests:GetChildren()) do
+        if (plr.Position - v.Root.Position).Magnitude < nearr then
+            near = v
+            nearr = (plr.Position - v.Root.Position).Magnitude
+        end
+    end
+
+    return near
+end
+-----------------------------------------------------------------------------------
+
+local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source')))()
+local Window1 = OrionLib:MakeWindow({Name = "RS Hub,Cracked By Teres | Weapon Fighting Simulator", HidePremium = false, SaveConfig = true, ConfigFolder = "Galaxy Hub", IntroText = "Cracked By Teres"})
+
+local Hometab = Window1:MakeTab({
+	Name = "Home",
+	Icon = "rbxassetid://4483345998",
+	PremiumOnly = false
+})
+
+local Maintab = Window1:MakeTab({
+	Name = "Main",
+	Icon = "rbxassetid://4483345998",
+	PremiumOnly = false
+})
+
+OrionLib:MakeNotification({
+	Name = "Welcome To RS Hub",
+	Content = "Thanks For Chosing ME",
+	Image = "rbxassetid://4483345998",
+	Time = 5
+})
+
+Hometab:AddSection({
+	Name = "Anti-AFK Always Working",
+	Default = true,
+	TextDisappear = true,
+	Callback = function(Value)
+repeat wait() until game:IsLoaded() 
+    game:GetService("Players").LocalPlayer.Idled:connect(function()
+    game:GetService("VirtualUser"):ClickButton2(Vector2.new())
+end)
+print'Anti-Afk Is Working'
+end	  
+})
+
+Hometab:AddSection({
+	Name = "Script By : MHD444#8522",
+	Default = "default box input",
+	TextDisappear = true,
+	Callback = function(Value)
+    end	  
+})
+
+Hometab:AddButton({
+	Name = "Copy Discord Link",
+	Callback = function()
+        setclipboard("https://discord.gg/psSMQvRSdd")
+        OrionLib:MakeNotification({
+            Name = "Copy Discord Link",
+            Content = "Discord Link Successfully Copied",
+            Image = "rbxassetid://4483345998",
+            Time = 5
+        })
+  	end    
+})
+
+Maintab:AddToggle({
+	Name = "Farm Nearest",
+	Callback = function(v)
+		_G.farmNearest = v
+    
+		spawn(function()
+			while task.wait() do
+				if not _G.farmNearest then break end
+				pcall(function()
+					local nearest = getNear()
+					
+					plr.CFrame = nearest.Root.CFrame * CFrame.new(0,0,10)
+					wait(.2)
+	
+					workspace.Fight.Events.FightAttack:InvokeServer(0,nearest.Name)   
+					
+					repeat task.wait()
+						plr.CFrame = nearest.Root.CFrame * CFrame.new(0,0,10)
+					until nearest.Root == nil or not _G.farmNearest
+				end)
+			end
+		end)
+	end
+})
+
+Maintab:AddToggle({
+	Name = "Farm Highest",
+	Callback = function(v)
+    _G.farmHighest = v
+
+    spawn(function()
+        while task.wait() do
+            if not _G.farmHighest then break end
+            pcall(function()
+                local highest = getHighest()
+
+                plr.CFrame = game:GetService("Workspace").Fight.ClientChests[highest].Root.CFrame * CFrame.new(0,0,10)
+                wait(.2)
+
+                workspace.Fight.Events.FightAttack:InvokeServer(0,highest)
+
+                repeat task.wait()
+                        plr.CFrame = game:GetService("Workspace").Fight.ClientChests[highest].Root.CFrame * CFrame.new(0,0,10)
+                until not game:GetService("Workspace").Fight.ClientChests[highest] or not _G.farmHighest
+            end)
+        end
+    end)
+end
+})
+
+
+Maintab:AddToggle({
+	Name = "Farm Lowest",
+	Callback = function(v)
+    _G.farmLowest = v
+
+    spawn(function()
+        while task.wait() do
+            if not _G.farmLowest then break end
+            pcall(function()
+                local lowest = getLowest()
+
+                plr.CFrame = game:GetService("Workspace").Fight.ClientChests[lowest].Root.CFrame * CFrame.new(0,0,10)
+                wait(.2)
+
+                workspace.Fight.Events.FightAttack:InvokeServer(0,lowest)
+
+                repeat task.wait()
+                        plr.CFrame = game:GetService("Workspace").Fight.ClientChests[lowest].Root.CFrame * CFrame.new(0,0,10)
+                until not game:GetService("Workspace").Fight.ClientChests[lowest] or not _G.farmLowest
+            end)
+        end
+    end)
+end
+})
+
+
+Maintab:AddToggle({
+	Name = "Collect Rewards",
+	Callback = function(v)
+	_G.autoCollect = v
+
+    spawn(function()
+        while task.wait() do
+            if not _G.autoCollect then break end
+            for i, v in pairs(game:GetService("Workspace").Rewards:GetChildren()) do
+                if v ~= nil then
+                    v.CFrame = plr.CFrame
+                end
+            end
+        end
+    end)
+end
+})

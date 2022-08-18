@@ -1,0 +1,111 @@
+--// Decompiled Code. 
+--SCRIPT
+local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source')))()
+local Window1 = OrionLib:MakeWindow({Name = "RS Hub,Cracked by teres | LUCKY BLOCKS Battlegrounds", HidePremium = false, SaveConfig = true, ConfigFolder = "Galaxy Hub", IntroText = "Cracked By Teres"})
+
+local Hometab = Window1:MakeTab({
+	Name = "Home",
+	Icon = "rbxassetid://4483345998",
+	PremiumOnly = false
+})
+
+local Maintab = Window1:MakeTab({
+	Name = "Main",
+	Icon = "rbxassetid://4483345998",
+	PremiumOnly = false
+})
+
+local Misctab = Window1:MakeTab({
+	Name = "Misc",
+	Icon = "rbxassetid://4483345998",
+	PremiumOnly = false
+})
+
+OrionLib:MakeNotification({
+	Name = "Welcome To RS Hub",
+	Content = "Thanks For Chosing ME",
+	Image = "rbxassetid://4483345998",
+	Time = 5
+})
+
+Hometab:AddSection({
+	Name = "Script By : MHD444#8522",
+	Default = "default box input",
+	TextDisappear = true,
+	Callback = function(Value)
+    end	  
+})
+
+Hometab:AddButton({
+	Name = "Copy Discord Link",
+	Callback = function()
+        setclipboard("https://discord.gg/psSMQvRSdd")
+        OrionLib:MakeNotification({
+            Name = "Copy Discord Link",
+            Content = "Discord Link Sucssefuly Copied",
+            Image = "rbxassetid://4483345998",
+            Time = 5
+        })
+  	end    
+})
+
+Maintab:AddButton({
+	Name = "Open Normal Lucky Block",
+	Callback = function()
+		game:GetService("ReplicatedStorage").SpawnLuckyBlock:FireServer()
+  	end    
+})
+
+Maintab:AddButton({
+	Name = "Open Super Lucky Block",
+	Callback = function()
+		game:GetService("ReplicatedStorage").SpawnSuperBlock:FireServer();
+  	end    
+})
+
+Maintab:AddButton({
+	Name = "Open Diamond Lucky Block",
+	Callback = function()
+		game:GetService("ReplicatedStorage").SpawnDiamondBlock:FireServer()
+  	end    
+})
+
+Maintab:AddButton({
+	Name = "Open Rainbow Lucky Block",
+	Callback = function()
+		game:GetService("ReplicatedStorage").SpawnRainbowBlock:FireServer()
+  	end    
+})
+
+Maintab:AddButton({
+	Name = "Open Galaxy Lucky Block",
+	Callback = function()
+		game:GetService("ReplicatedStorage").SpawnGalaxyBlock:FireServer()
+  	end    
+})
+
+Misctab:AddSlider({
+	Name = "Walk Speed",
+	Min = 0,
+	Max = 200,
+	Default = 17,
+	Color = Color3.fromRGB(255,255,255),
+	Increment = 1,
+	ValueName = "Speed",
+	Callback = function(v)
+		game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = v
+	end    
+})
+
+Misctab:AddSlider({
+	Name = "Jump Power",
+	Min = 0,
+	Max = 200,
+	Default = 50,
+	Color = Color3.fromRGB(255,255,255),
+	Increment = 1,
+	ValueName = "Jump",
+	Callback = function(v)
+		game.Players.LocalPlayer.Character.Humanoid.JumpPower = v
+	end    
+})

@@ -1,0 +1,228 @@
+--// Decompiled Code. 
+--SCRIPT
+local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source')))()
+local Window1 = OrionLib:MakeWindow({Name = "RS Hub,Cracked By Teres | Strong Clikers", HidePremium = false, SaveConfig = true, ConfigFolder = "Galaxy Hub", IntroText = "Cracked By Teres"})
+
+local Hometab = Window1:MakeTab({
+	Name = "Home",
+	Icon = "rbxassetid://6026568198",
+	PremiumOnly = false
+})
+
+local Maintab = Window1:MakeTab({
+	Name = "Main",
+	Icon = "rbxassetid://4483345998",
+	PremiumOnly = false
+})
+
+local Eggstab = Window1:MakeTab({
+	Name = "Eggs",
+	Icon = "rbxassetid://4483345998",
+	PremiumOnly = false
+})
+
+local Teleporttab = Window1:MakeTab({
+	Name = "Teleport",
+	Icon = "rbxassetid://6034503364",
+	PremiumOnly = false
+})
+
+
+OrionLib:MakeNotification({
+	Name = "Welcome To RS Hub",
+	Content = "Thanks For Chosing ME",
+	Image = "rbxassetid://4483345998",
+	Time = 5
+})
+
+Hometab:AddSection({
+	Name = "Anti-AFK Always Working",
+	Default = true,
+	TextDisappear = true,
+	Callback = function(Value)
+repeat wait() until game:IsLoaded() 
+    game:GetService("Players").LocalPlayer.Idled:connect(function()
+    game:GetService("VirtualUser"):ClickButton2(Vector2.new())
+end)
+print'Anti-Afk Is Working'
+end	  
+})
+
+Hometab:AddSection({
+	Name = "Script By : MHD444#8522",
+	Default = "default box input",
+	TextDisappear = true,
+	Callback = function(Value)
+    end	  
+})
+
+Hometab:AddButton({
+	Name = "Copy Discord Link",
+	Callback = function()
+        setclipboard("https://discord.gg/psSMQvRSdd")
+        OrionLib:MakeNotification({
+            Name = "Copy Discord Link",
+            Content = "Discord Link Sucssefuly Copied",
+            Image = "rbxassetid://4483345998",
+            Time = 5
+        })
+  	end    
+})
+
+Maintab:AddToggle({
+	Name = "Auto Click",
+	Default = false,
+	Callback = function(bool)
+        _G.autoClicker = bool
+        if bool then
+            autoClick()
+	end    
+end
+})
+
+Maintab:AddToggle({
+	Name = "Auto Sell",
+	Default = false,
+	Callback = function(t)
+        _G.autoSeller = t
+        if t then
+            autoSell()
+	end    
+end
+})
+
+Maintab:AddToggle({
+	Name = "Auto Rebirth",
+	Default = false,
+	Callback = function(bool)
+        _G.autoRebirther = bool
+        if bool then
+            autoRebirth()
+	end    
+end
+})
+
+Maintab:AddButton({
+	Name = "Remove Some PopUps",
+	Default = false,
+	Callback = function(bool)
+		OrionLib:MakeNotification({
+			Name = "PopUps",
+			Content = "PopUps Sucssefuly Removed",
+			Image = "rbxassetid://4483345998",
+			Time = 5
+		})
+        pcall(function() game:GetService("Players").LocalPlayer.PlayerGui.Interface.ScreenDebris:Destroy()
+        end)
+	end    
+})
+
+
+Maintab:AddToggle({
+	Name = "Auto BuffStrength",
+	Default = false,
+	Callback = function()
+		game:GetService("ReplicatedStorage").Remotes.BuffStrength:FireServer()
+	end
+})
+
+Eggstab:AddDropdown({
+	Name = "Choose An Egg",
+	Default = "Choose An Egg...",
+	Options = {"Basic Egg", "Deadly Egg", "Earthly Egg", "Mountain Egg", "Desert Egg", "Winter Egg", "Beach Egg", "Ocean Egg","Moon Egg","Tech Egg"},
+	Callback = function(value)
+		sellEgg = value
+		print ("Selected Egg")
+	end    
+})
+
+Eggstab:AddToggle({
+	Name = "Eggs",
+	Default = false,
+	Callback = function(bool)
+        _G.autoEgger = bool
+        if bool then
+            autoEgg(sellEgg)
+	end    
+end
+})
+
+
+Teleporttab:AddDropdown({
+	Name = "Choose World",
+	Default = "Choose World...",
+	Options = {"Plains", "Mountains", "Desert", "Winter", "Beach", "Ocean", "Moon", "Tech"},
+	Callback = function(t)
+		SelectedEWorld = t
+		print("Selected World")
+	end    
+})
+
+Teleporttab:AddButton({
+	Name = "Tp To Selected World",
+	Default = false,
+	Callback = function(bool)
+		game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").Portals.Locations[tostring(SelectedEWorld)].CFrame
+	end    
+})
+
+Teleporttab:AddButton({
+	Name = "Tp Spawn",
+	Default = false,
+	Callback = function(bool)
+		game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").Portals.ReturnSpawn.CFrame
+	end    
+})
+
+Teleporttab:AddButton({
+	Name = "Tp Upgrades Shop",
+	Default = false,
+	Callback = function(bool)
+		game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").TriggerAreas.Upgrades.Platform.CFrame
+	end    
+})
+
+-- functions
+
+function autoClick()
+    spawn(function()
+        while _G.autoClicker == true do
+            game:GetService("ReplicatedStorage").Remotes.TrainStrength:FireServer()
+            wait()
+        end
+    end)
+end
+
+function autoRebirth()
+    spawn(function()
+        while _G.autoRebirther == true do
+            game:GetService("ReplicatedStorage").Remotes.Rebirth:FireServer()
+            wait()
+        end
+    end)
+end
+
+local plr = game.Players.LocalPlayer.Character.Head
+function autoSell()
+	spawn(function()
+		while _G.autoSeller == true do
+			for _,v in pairs(game:GetService("Workspace").TriggerAreas:GetDescendants()) do
+  			if v:IsA("TouchTransmitter") then
+    			firetouchinterest(plr, v.Parent, 0)
+    			task.wait()
+    			firetouchinterest(plr, v.Parent, 1)
+			end
+		end
+	end
+end)
+end
+
+function autoEgg()
+    spawn(function()
+        while _G.autoEgger == true do
+            local ohString1 = sellEgg
+            game:GetService("ReplicatedStorage").Remotes.HatchEgg:FireServer(ohString1)
+            wait()
+        end
+    end)
+end

@@ -1,0 +1,387 @@
+--// Decompiled Code. 
+--SCRIPT
+game.StarterGui:SetCore("SendNotification", {
+    Title = "Game Suppoted";
+    Text = "Script Loaded";})
+    Duration = 4
+
+local lib = loadstring(game:HttpGet"https://raw.githubusercontent.com/dawid-scripts/UI-Libs/main/fluxlib.txt")()
+
+_G.closeBind = Enum.KeyCode.LeftAlt
+
+local win = lib:Window("PET SIM X", "Cracked By TERES", Color3.fromRGB(255, 110, 48), _G.closeBind)
+
+local tab = win:Tab("Farming", "http://www.roblox.com/asset/?id=6023426915")
+
+tab:Toggle("Auto Farm", "Start The Auto Farm", false, function(t)
+    StartFarm = t
+end)
+
+spawn(function()
+    while task.wait() do
+        if StartFarm then
+            pcall(function ()
+                coroutine.wrap(function ()
+
+                function FarmCoin(CoinID, PetID)
+                    workspace.__THINGS.__REMOTES["join coin"]:InvokeServer({[1] = CoinID, [2] = {[1] = PetID}})
+                    workspace.__THINGS.__REMOTES["farm coin"]:FireServer({[1] = CoinID, [2] = PetID})
+                end
+
+
+                function GetPet()
+                    local Returneble = {}
+                    for i,v in pairs(game:GetService("Players").LocalPlayer.PlayerGui.Inventory.Frame.Main.Pets:GetChildren()) do
+                        if v.ClassName == "TextButton" and v.Equipped.Visible then
+                            table.insert(Returneble, v.Name)
+                        end
+                    end
+                    return Returneble
+                end
+                local NearestCoin = math.huge
+                local nearest;
+                for i,v in pairs(game:GetService("Workspace")["__THINGS"].Coins:GetChildren()) do
+                    if (v.POS.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude < NearestCoin then
+                        nearest = v
+                        NearestCoin = (v.POS.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude
+                    end
+                end
+                local MyPets = GetPet()
+                for i,v in pairs(MyPets) do
+                    FarmCoin(nearest.Name, v)
+                end
+            end)()
+            end)
+        end
+    end
+end)
+
+tab:Toggle("Auto Collect Orbs", "Auto Collect", false, function(t)
+    Collect = t
+  end)
+
+
+  spawn(function()
+    while task.wait() do
+        if Collect then
+            pcall(function ()
+                for i,v in pairs(game:GetService("Workspace")["__THINGS"].Orbs:GetChildren()) do
+                    v.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame
+                end
+
+            end)
+        end
+    end
+end)
+
+tab:Toggle("Auto Collect LootBags", "Auto Coollect", false, function(t)
+            LootBags = t
+    end)
+
+          spawn(function()
+            while task.wait() do
+                if LootBags then
+                    pcall(function ()
+                        for i,v in pairs(game:GetService("Workspace")["__THINGS"].Lootbags:GetChildren()) do
+                            v.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame
+                        end
+                    end)
+                end
+            end
+        end)
+
+local tab = win:Tab("Eggs", "http://www.roblox.com/asset/?id=6023426915")
+
+        local config = {
+            Egg = {
+                AutoEgg = false,
+                SelectedEgg = false,
+            },
+        }
+        
+tab:Button("Remove Egg Animation", "EZ", function()
+            for i,v in pairs(getgc(true)) do
+                        if (typeof(v) == 'table' and rawget(v, 'OpenEgg')) then
+                        v.OpenEgg = function()
+                    return
+                end
+             end
+           end
+           lib:Notification("Animation Removed ", "Okay")
+        end)
+
+
+        local spapets = {}
+        for _, v  in pairs(game:GetService("ReplicatedStorage").Game.Eggs:FindFirstChild("Spawn Eggs"):GetChildren()) do
+            table.insert(spapets, v.Name)
+        end
+        
+        local fanpets = {}
+        for _, v  in pairs(game:GetService("ReplicatedStorage").Game.Eggs:FindFirstChild("Fantasy Eggs"):GetChildren()) do
+            table.insert(fanpets, v.Name)
+        end
+        
+        local techpets = {}
+        for _, v  in pairs(game:GetService("ReplicatedStorage").Game.Eggs:FindFirstChild("Tech Eggs"):GetChildren()) do
+            table.insert(techpets, v.Name)
+        end
+        
+        local pixelpets = {}
+        for _, v  in pairs(game:GetService("ReplicatedStorage").Game.Eggs:FindFirstChild("Pixel Eggs"):GetChildren()) do
+            table.insert(pixelpets, v.Name)
+        end
+        
+        local Axopets = {}
+        for _, v  in pairs(game:GetService("ReplicatedStorage").Game.Eggs:FindFirstChild("Axolotl Ocean"):GetChildren()) do
+            table.insert(Axopets, v.Name)
+        end
+        
+        tab:Dropdown("Auto Egg (Spawn Eggs)",spapets,function(value) config.Egg.SelectedEgg = value end)
+        
+        tab:Dropdown("Auto Egg (Fantasy Eggs)",fanpets,function(value) config.Egg.SelectedEgg = value end)
+        
+        tab:Dropdown("Auto Egg (Tech Eggs)",techpets,function(value) config.Egg.SelectedEgg = value end)
+        
+        tab:Dropdown("Auto Egg (Axolotl Eggs)",Axopets,function(value) config.Egg.SelectedEgg = value end)
+        
+        tab:Dropdown("Auto Egg (Pixel Eggs)",pixelpets,function(value) config.Egg.SelectedEgg = value end)
+        
+        
+        tab:Toggle("Auto Egg X1", "Auto Hatch Egg x1", false, function(bool)
+            config.Egg.AutoEgg = bool
+            spawn(function()
+             while config.Egg.AutoEgg == true and task.wait(0.2) do
+                local args = {[1] = {[1] = config.Egg.SelectedEgg,[2] = false }}workspace.__THINGS.__REMOTES["buy egg"]:InvokeServer(unpack(args))
+                end
+            end)
+        end)
+        
+        tab:Toggle("Auto Egg X3", "Auto Hatch Egg X3 (Need Gamepass)", false, function(bool)
+            config.Egg.AutoEgg = bool
+            spawn(function()
+             while config.Egg.AutoEgg == true and task.wait(0.2) do
+                local args = {[1] = {[1] = config.Egg.TripleEggs,[2] = false }}workspace.__THINGS.__REMOTES["buy egg"]:InvokeServer(unpack(args))
+                end
+            end)
+        end)
+        
+
+local tab = win:Tab("Misc", "http://www.roblox.com/asset/?id=6023426915")
+
+tab:Toggle("Anti-AFK", "The Game Wont Kick You :)", false, function(isToggled)
+        _G.antiAfk = isToggled
+        if isToggled then
+            spawn(function()
+                lib:Notification("Anti-AFK Is Working", "Okay")
+                VirtualUser = game:GetService("VirtualUser")
+                table.insert(allConnected, game:GetService("Players").LocalPlayer.Idled:connect(function()
+                    if(_G.antiAfk) then
+                        VirtualUser:CaptureController()
+                        VirtualUser:ClickButton2(Vector2.new())
+                    else
+                        return false
+                    end
+                end))
+            end)
+        end
+    end)
+
+tab:Button("Start Tracker", "Shows How Much Coin Did U Get Or Spent In last 60 Sec", function()
+        loadstring(game:HttpGet('https://pastebin.com/raw/dPXXyp4A'))()
+        wait(60)
+        warn("60s has PASSED!")
+end)
+
+tab:Button("Get GamePasses (TP + AutoHatch)", "Get Teleport Gamepass AND AutoHach", function()
+    local main = debug.getupvalues(require(game.ReplicatedStorage:WaitForChild("Framework"):WaitForChild("Library")).Save.Get)[2][game.Players.LocalPlayer].save.Gamepasses
+    table.insert(main,18674296)
+    table.insert(main,18674298)
+    table.insert(main,18674321)
+    table.insert(main,21176989)
+        lib:Notification("Successfully Getted GamePasses", "Okay")
+end)
+tab:Button("Possible Lag Reducation", "Get Better Fps", function()
+          game:GetService("Players").LocalPlayer.PlayerScripts.Scripts.GUIs["Coin Rewards HUD"].Disabled = true
+        if game:GetService("Workspace"):FindFirstChild("__DEBRIS") then
+          game:GetService("Workspace")["__DEBRIS"]:Destroy()
+              lib:Notification("Lag Successfully Reduced", "Okay")
+      end
+end)
+
+
+local tab = win:Tab("Player", "http://www.roblox.com/asset/?id=6023426915")
+
+tab:Slider("WalkSpeed", "EZ", 0, 200, 25, function(t)
+   game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = t
+end)
+tab:Slider("JumpPower", "EZ", 0, 200, 50, function(t)
+   game.Players.LocalPlayer.Character.Humanoid.JumpPower = t
+end)
+tab:Button("Reset Walk and Jump", "EZ", function()
+    game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = 25
+    game.Players.LocalPlayer.Character.Humanoid.JumpPower = 50
+lib:Notification("You are Normal Again now", "Okay")
+end)
+
+
+
+local tab = win:Tab("Redeem Tab", "http://www.roblox.com/asset/?id=6023426915")
+
+tab:Toggle("Auto Claim Dark Matter", "Claim Dark Matter Pets", false, function(p)
+    getgenv().dmAutoClaim = p
+    if bool then
+        spawn(function()
+            while getgenv().dmAutoClaim do
+                for i,v in pairs(save["DarkMatterQueue"]) do
+                    if (v["readyTime"] < os.time()) then
+                        Lib.Network.Invoke("redeem dark matter pet", i)
+                    end
+                end
+                wait(1)
+            end
+            return
+        end)
+    end
+end)
+
+
+tab:Toggle("Auto Redeem Rank Chest", "Claim Rank Chest Rewards", false, function(l)
+    _G.autoClaimRankChest = l
+    if l then
+        spawn(function()
+            while _G.autoClaimRankChest do
+local args = {
+    [1] = {}
+}
+
+workspace.__THINGS.__REMOTES:FindFirstChild("redeem rank rewards"):InvokeServer(unpack(args))
+
+            end
+        end)
+    end
+    end)
+
+
+    tab:Toggle("Claim Free Gifts", "Claim The Free Gifts", false ,function(m)
+        _G.gifts = m
+        lib:Notification("Wait For The Timer To End And Gifts Will Claimed Automatically", "Okay")
+    
+        spawn(function()
+            while task.wait(1) do
+                if _G.gifts then
+    local args = {
+        [1] = {
+            [1] = 1
+        }
+    }
+    
+    workspace.__THINGS.__REMOTES:FindFirstChild("redeem free gift"):InvokeServer(unpack(args))
+
+    local args = {
+        [1] = {
+            [1] = 2
+        }
+    }
+    
+    workspace.__THINGS.__REMOTES:FindFirstChild("redeem free gift"):InvokeServer(unpack(args))
+
+    local args = {
+        [1] = {
+            [1] = 3
+        }
+    }
+    
+    workspace.__THINGS.__REMOTES:FindFirstChild("redeem free gift"):InvokeServer(unpack(args))
+
+    local args = {
+        [1] = {
+            [1] = 4
+        }
+    }
+    
+    workspace.__THINGS.__REMOTES:FindFirstChild("redeem free gift"):InvokeServer(unpack(args))
+    local args = {
+        [1] = {
+            [1] = 5
+        }
+    }
+    
+    workspace.__THINGS.__REMOTES:FindFirstChild("redeem free gift"):InvokeServer(unpack(args))
+
+    local args = {
+        [1] = {
+            [1] = 6
+        }
+    }
+    
+    workspace.__THINGS.__REMOTES:FindFirstChild("redeem free gift"):InvokeServer(unpack(args))
+
+    local args = {
+        [1] = {
+            [1] = 7
+        }
+    }
+    
+    workspace.__THINGS.__REMOTES:FindFirstChild("redeem free gift"):InvokeServer(unpack(args))
+
+    local args = {
+        [1] = {
+            [1] = 8
+        }
+    }
+    
+    workspace.__THINGS.__REMOTES:FindFirstChild("redeem free gift"):InvokeServer(unpack(args))
+    local args = {
+        [1] = {
+            [1] = 9
+        }
+    }
+    
+    workspace.__THINGS.__REMOTES:FindFirstChild("redeem free gift"):InvokeServer(unpack(args))
+
+    local args = {
+        [1] = {
+            [1] = 10
+        }
+    }
+    
+    workspace.__THINGS.__REMOTES:FindFirstChild("redeem free gift"):InvokeServer(unpack(args))
+
+    local args = {
+        [1] = {
+            [1] = 11
+        }
+    }
+    
+    workspace.__THINGS.__REMOTES:FindFirstChild("redeem free gift"):InvokeServer(unpack(args))
+
+    local args = {
+        [1] = {
+            [1] = 12
+        }
+    }
+    
+    workspace.__THINGS.__REMOTES:FindFirstChild("redeem free gift"):InvokeServer(unpack(args))
+
+end
+end
+end)
+end)
+
+local tab = win:Tab("Credits", "http://www.roblox.com/asset/?id=6023426915")
+
+tab:Button("By MHD444#8522 + TÌ·KÌ·0Ì·2Ì·#9064", "EZ", function()
+end)
+
+tab:Button("(TK Make Only Auto Farm And Collect Coins XD)", "EZ", function()
+end)
+
+tab:Button("Galaxy Hub Discord Link", "EZ", function()
+    setclipboard("https://discord.gg/Ng6EpuA2RG")
+    lib:Notification("Discord Link Successfully Copied", "Okay")
+end)
+
+tab:Button("Strike Hub Discord Link", "EZ", function()
+    setclipboard("https://discord.gg/mu7J3wJmjH")
+lib:Notification("Discord Link Successfully Copied", "Okay")
+end)

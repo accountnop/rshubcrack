@@ -1,0 +1,617 @@
+--// Decompiled Code. 
+--SCRIPT
+local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source')))()
+local Window1 = OrionLib:MakeWindow({Name = "RS Hub, Cracked By Teres | Tapping Simulator", HidePremium = false, SaveConfig = true, ConfigFolder = "Galaxy Hub", IntroText = "Cracked By Teres, RS Hub L"})
+
+local Hometab = Window1:MakeTab({
+	Name = "Home",
+	Icon = "rbxassetid://4483345998",
+	PremiumOnly = false
+})
+
+local Maintab = Window1:MakeTab({
+	Name = "Main",
+	Icon = "rbxassetid://4483345998",
+	PremiumOnly = false
+})
+
+
+local Eggtab = Window1:MakeTab({
+	Name = "Eggs",
+	Icon = "rbxassetid://4483345998",
+	PremiumOnly = false
+})
+
+
+local Tptab = Window1:MakeTab({
+	Name = "Teleport",
+	Icon = "rbxassetid://4483345998",
+	PremiumOnly = false
+})
+
+local plyrtab = Window1:MakeTab({
+	Name = "Player",
+	Icon = "rbxassetid://4483345998",
+	PremiumOnly = false
+})
+
+OrionLib:MakeNotification({
+	Name = "Welcome To RS Hub",
+	Content = "Thanks For Chosing ME",
+	Image = "rbxassetid://4483345998",
+	Time = 5
+})
+
+Hometab:AddSection({
+	Name = "Script By : MHD444#8522 ",
+	Default = "default box input",
+	TextDisappear = true,
+	Callback = function(Value)
+    end	  
+})
+
+Hometab:AddButton({
+	Name = "Copy Discord Link",
+	Callback = function()
+        setclipboard("https://discord.gg/Ng6EpuA2RG")
+        OrionLib:MakeNotification({
+            Name = "Copy Discord Link",
+            Content = "Discord Link Sucssefuly Copied",
+            Image = "rbxassetid://4483345998",
+            Time = 5
+        })
+  	end    
+})
+
+
+Maintab:AddToggle({
+	Name = "Auto Clicker",
+	Default = false,
+	Callback = function(bool)
+        AutoTap = bool
+        if bool then
+            doTap();
+        end
+	end    
+})
+
+
+Maintab:AddDropdown({
+     Rebirths;
+	Name = "Rebirth Count",
+	Default = "1",
+    Options = {"1 Rebirths", "5 Rebirths", "10 Rebirths", "20 Rebirths", "100 Rebirths", "500 Rebirths", "2k Rebirths", "4.5k Rebirths", "8k Rebirths", "12.5k Rebirths", "18k Rebirths", "24.5k Rebirths", "32k Rebirths", "40.5k Rebirths", "50k Rebirths", "75k Rebirths", "125k Rebirths",},
+    Callback = function(value)
+        Rebirths = value;
+    end
+})
+
+
+Maintab:AddToggle({
+	Name = "Auto Rebirths",
+	Default = false,
+	Callback = function(v)
+        getgenv().autoclicker = v
+        while true do
+            if not getgenv().autoclicker then return end
+
+if Rebirths == "1 Rebirths" then
+local A_1 = 1
+local Event = game:GetService("ReplicatedStorage").Events.Rebirth
+Event:FireServer(A_1)
+wait(1)
+else if Rebirths == "5 Rebirths" then
+local A_1 = 5
+local Event = game:GetService("ReplicatedStorage").Events.Rebirth
+Event:FireServer(A_1)
+wait(1)
+else if Rebirths == "10 Rebirths" then
+local A_1 = 10
+local Event = game:GetService("ReplicatedStorage").Events.Rebirth
+Event:FireServer(A_1)
+wait(1)
+else if Rebirths == "20 Rebirths" then
+local A_1 = 20
+local Event = game:GetService("ReplicatedStorage").Events.Rebirth
+Event:FireServer(A_1)
+wait(1)
+else if Rebirths == "100 Rebirths" then
+local A_1 = 100
+local Event = game:GetService("ReplicatedStorage").Events.Rebirth
+Event:FireServer(A_1)
+wait(1)
+else if Rebirths == "500 Rebirths" then
+local A_1 = 500
+local Event = game:GetService("ReplicatedStorage").Events.Rebirth
+Event:FireServer(A_1)
+wait(1)
+else if Rebirths == "2k Rebirths" then
+local A_1 = 2000
+local Event = game:GetService("ReplicatedStorage").Events.Rebirth
+Event:FireServer(A_1)
+wait(1)
+else if Rebirths == "4.5k Rebirths" then
+local A_1 = 4500
+local Event = game:GetService("ReplicatedStorage").Events.Rebirth
+Event:FireServer(A_1)
+wait(1)
+else if Rebirths == "8k Rebirths" then
+local A_1 = 8000
+local Event = game:GetService("ReplicatedStorage").Events.Rebirth
+Event:FireServer(A_1)
+wait(1)
+else if Rebirths == "12.5k Rebirths" then
+local A_1 = 12500
+local Event = game:GetService("ReplicatedStorage").Events.Rebirth
+Event:FireServer(A_1)
+wait(1)
+else if Rebirths == "18k Rebirths" then
+local A_1 = 18000
+local Event = game:GetService("ReplicatedStorage").Events.Rebirth
+Event:FireServer(A_1)
+wait(1)
+else if Rebirths == "24.5k Rebirths" then
+local A_1 = 24500
+local Event = game:GetService("ReplicatedStorage").Events.Rebirth
+Event:FireServer(A_1)
+wait(1)
+else if Rebirths == "32k Rebirths" then
+local A_1 = 32000
+local Event = game:GetService("ReplicatedStorage").Events.Rebirth
+Event:FireServer(A_1)
+wait(1)
+else if Rebirths == "40.5k Rebirths" then
+local A_1 = 40500
+local Event = game:GetService("ReplicatedStorage").Events.Rebirth
+Event:FireServer(A_1)
+wait(1)
+else if Rebirths == "50k Rebirths" then
+local A_1 = 50000
+local Event = game:GetService("ReplicatedStorage").Events.Rebirth
+Event:FireServer(A_1)
+wait(1)
+else if Rebirths == "75k Rebirths" then
+local A_1 = 75000
+local Event = game:GetService("ReplicatedStorage").Events.Rebirth
+Event:FireServer(A_1)
+wait(1)
+else if Rebirths == "125k Rebirths" then
+local A_1 = 125000
+local Event = game:GetService("ReplicatedStorage").Events.Rebirth
+Event:FireServer(A_1)
+wait(1)
+end
+end
+end
+end
+end
+end
+end
+end 
+end
+end
+end
+end
+end
+end
+end
+end
+end
+end
+end
+})
+
+Eggtab:AddSection({
+	Name = "            DONT OPEN PET INVENTORY WHILE OPEN EGG IS ON",
+	Default = "default box input",
+	TextDisappear = true,
+	Callback = function(Value)
+    end	  
+})
+
+
+Eggtab:AddSection({
+	Name = "                                  OR AUTO EGG WILL STOP",
+	Default = "default box input",
+	TextDisappear = true,
+	Callback = function(Value)
+    end	  
+})
+
+
+    Eggtab:AddDropdown({
+        Egg;
+       Name = "Choose Egg",
+       Default = "Starter Egg",
+       Options = {"Starter Egg", "Wood Egg", "Jungle Egg", "Forest Egg", "Flower Egg", "Swamp Egg", "Snow Egg", "Desert Egg", "Death Egg", "Beach Egg", "Dominus Egg", "Mine Egg", "Cloud Egg", "2M Egg","Coral Egg","Dark Egg"},
+       Callback = function(value)
+        Eggs = value;
+       end
+   })
+
+  
+        Eggtab:AddToggle({
+            Name = "Open Egg",
+            Default = false,
+            Callback = function(v)
+
+       if Eggs == "Starter Egg" then
+
+            local A_1 = 
+            {
+            }
+            local A_2 = "Starter Egg"
+            local A_3 = 1
+            local Event = game:GetService("ReplicatedStorage").Events.HatchEgg
+            Event:InvokeServer(A_1, A_2, A_3)
+    wait(1)
+else if Eggs == "Wood Egg" then
+
+    local A_1 = 
+    {
+    }
+    local A_2 = "Wood Egg"
+    local A_3 = 1
+    local Event = game:GetService("ReplicatedStorage").Events.HatchEgg
+    Event:InvokeServer(A_1, A_2, A_3)
+    wait(0.2)
+
+else if Eggs == "Jungle Egg" then
+
+    local A_1 = 
+    {
+    }
+    local A_2 = "Jungle Egg"
+    local A_3 = 1
+    local Event = game:GetService("ReplicatedStorage").Events.HatchEgg
+    Event:InvokeServer(A_1, A_2, A_3)
+    wait(0.2)
+else if Eggs == "Forest Egg" then 
+    local A_1 = 
+    {
+    }
+    local A_2 = "Forest Egg"
+    local A_3 = 1
+    local Event = game:GetService("ReplicatedStorage").Events.HatchEgg
+    Event:InvokeServer(A_1, A_2, A_3)
+    wait(0.2)
+
+else if Eggs == "Flower Egg" then
+    local A_1 = 
+    {
+    }
+    local A_2 = "Flower Egg"
+    local A_3 = 1
+    local Event = game:GetService("ReplicatedStorage").Events.HatchEgg
+    Event:InvokeServer(A_1, A_2, A_3)
+    wait(0.2)
+
+else if Eggs == "Swamp Egg" then
+    local A_1 = 
+    {
+    }
+    local A_2 = "Swamp Egg"
+    local A_3 = 1
+    local Event = game:GetService("ReplicatedStorage").Events.HatchEgg
+    Event:InvokeServer(A_1, A_2, A_3)
+    wait(0.2)
+
+else if Eggs == "Snow Egg" then 
+    local A_1 = 
+    {
+    }
+    local A_2 = "Snow Egg"
+    local A_3 = 1
+    local Event = game:GetService("ReplicatedStorage").Events.HatchEgg
+    Event:InvokeServer(A_1, A_2, A_3)
+    wait(0.2)
+
+else if Eggs == "Desert Egg" then 
+    local A_1 = 
+    {
+    }
+    local A_2 = "Desert Egg"
+    local A_3 = 1
+    local Event = game:GetService("ReplicatedStorage").Events.HatchEgg
+    Event:InvokeServer(A_1, A_2, A_3)
+    
+    wait(0.2)
+else if Eggs == "Death Egg" then
+
+    local A_1 = 
+    {
+    }
+    local A_2 = "Death Egg"
+    local A_3 = 1
+    local Event = game:GetService("ReplicatedStorage").Events.HatchEgg
+    Event:InvokeServer(A_1, A_2, A_3)
+    wait(0.2)
+else if Eggs == "Beach Egg" then
+    local A_1 =  
+    {
+    }
+    local A_2 = "Beach Egg"
+    local A_3 = 1
+    local Event = game:GetService("ReplicatedStorage").Events.HatchEgg
+    Event:InvokeServer(A_1, A_2, A_3)
+    wait(0.2)
+else if Eggs == "Dominus Egg" then
+    local A_1 =  
+    {
+    }
+    local A_2 = "Dominus Egg"
+    local A_3 = 1
+    local Event = game:GetService("ReplicatedStorage").Events.HatchEgg
+    Event:InvokeServer(A_1, A_2, A_3)
+    wait(0.2)
+
+else if Eggs == "Mine Egg" then
+
+    local A_1 = 
+{
+}
+local A_2 = "Mine Egg"
+local A_3 = 1
+local Event = game:GetService("ReplicatedStorage").Events.HatchEgg
+Event:InvokeServer(A_1, A_2, A_3)
+wait(0.2)
+else if Eggs == "2M Egg" then
+    local A_1 = 
+    {
+    }
+    local A_2 = "2M Egg"
+    local A_3 = 1
+    local Event = game:GetService("ReplicatedStorage").Events.HatchEgg
+    Event:InvokeServer(A_1, A_2, A_3)
+    wait(0.2)
+    else if Eggs == "Cloud Egg" then
+    local A_1 = 
+    {
+    }
+    local A_2 = "Cloud Egg"
+    local A_3 = 1
+    local Event = game:GetService("ReplicatedStorage").Events.HatchEgg
+    Event:InvokeServer(A_1, A_2, A_3)
+    wait(0.2)
+else if Eggs == "Coral Egg " then
+    local A_1 = 
+    {
+    }
+    local A_2 = "Coral Egg"
+    local A_3 = 1
+    local Event = game:GetService("ReplicatedStorage").Events.HatchEgg
+    Event:InvokeServer(A_1, A_2, A_3)
+    wait(0.2)
+else if Eggs == "Dark Egg " then
+    local A_1 = 
+    {
+    }
+    local A_2 = "Dark Egg"
+    local A_3 = 1
+    local Event = game:GetService("ReplicatedStorage").Events.HatchEgg
+    Event:InvokeServer(A_1, A_2, A_3)
+    wait(0.2)
+
+end
+end
+end
+end
+end
+end
+end
+end
+end
+end
+end
+end
+end
+end
+end
+end
+end
+})
+
+
+
+
+----auto clicker
+
+
+fun
+        while AutoTap == ction doTap()
+    spawn(function()true do
+            game:GetService("ReplicatedStorage").Events.Tap:FireServer()
+            wait()
+        end
+    end)
+end
+
+
+
+----teleport
+
+
+Tptab:AddButton({
+	Name = "TP TO Spawn Island",
+	Callback = function()
+        local args = {
+            [1] = CFrame.new(-296.2548522949219, 23.281475067138672, -462.1688232421875) * CFrame.Angles(-0, -1.5707963705062866, 0)
+        }   
+        game:GetService("ReplicatedStorage").Events.Teleport:FireServer(unpack(args))
+    end        
+})
+
+
+Tptab:AddButton({
+	Name = "TP TO Forest Island",
+	Callback = function()
+
+local args = {
+    [1] = CFrame.new(-163.98446655273438, 987.5964965820312, -403.33941650390625) * CFrame.Angles(-0, 0, -0)
+}
+
+game:GetService("ReplicatedStorage").Events.Teleport:FireServer(unpack(args))
+
+    end        
+})
+
+
+Tptab:AddButton({
+	Name = "TP TO Flower Island",
+	Callback = function()
+
+local args = {
+    [1] = CFrame.new(-179.51564025878906, 1524.6309814453125, -682.4987182617188) * CFrame.Angles(3.1415927410125732, -0, -3.1415927410125732)
+}
+
+game:GetService("ReplicatedStorage").Events.Teleport:FireServer(unpack(args))
+
+    end        
+})
+
+
+Tptab:AddButton({
+	Name = "TP TO Swamp Island",
+	Callback = function()
+        local args = {
+            [1] = CFrame.new(-264.35888671875, 2123.06298828125, -694.6613159179688) * CFrame.Angles(3.1415927410125732, -0, -3.1415927410125732)
+        }
+        
+        game:GetService("ReplicatedStorage").Events.Teleport:FireServer(unpack(args))
+    end        
+})
+
+
+Tptab:AddButton({
+	Name = "TP TO Snow Island",
+	Callback = function()
+local args = {
+    [1] = CFrame.new(-201.77197265625, 2944.481689453125, -470.40875244140625) * CFrame.Angles(0, 1.5707963705062866, 0)
+}
+
+game:GetService("ReplicatedStorage").Events.Teleport:FireServer(unpack(args))
+
+
+    end        
+})
+
+
+Tptab:AddButton({
+	Name = "TP TO Desert Island",
+	Callback = function()
+local args = {
+    [1] = CFrame.new(-166.28515625, 4235.38916015625, -779.1531372070312) * CFrame.Angles(0, 1.5707963705062866, 0)
+}
+
+game:GetService("ReplicatedStorage").Events.Teleport:FireServer(unpack(args))
+
+    end        
+})
+
+
+Tptab:AddButton({
+	Name = "TP TO Death Island",
+	Callback = function()
+local args = {
+    [1] = CFrame.new(-276.2012634277344, 5425.62158203125, -480.28778076171875) * CFrame.Angles(0, 1.5707963705062866, 0)
+}
+
+game:GetService("ReplicatedStorage").Events.Teleport:FireServer(unpack(args))
+
+    end        
+})
+
+
+Tptab:AddButton({
+	Name = "TP TO Beach Island",
+	Callback = function()
+local args = {
+    [1] = CFrame.new(-140.3450927734375, 6881.630859375, -495.68212890625) * CFrame.Angles(0, 1.5707963705062866, 0)
+}
+
+game:GetService("ReplicatedStorage").Events.Teleport:FireServer(unpack(args))
+
+    end        
+})
+
+
+Tptab:AddButton({
+	Name = "TP TO Mines Island",
+	Callback = function()
+local args = {
+    [1] = CFrame.new(-243.2586669921875, 8376.5166015625, -483.8897705078125) * CFrame.Angles(0, 1.5707963705062866, 0)
+}
+
+game:GetService("ReplicatedStorage").Events.Teleport:FireServer(unpack(args))
+
+    end        
+})
+
+
+Tptab:AddButton({
+	Name = "TP TO Cloud Island",
+	Callback = function()
+local args = {
+    [1] = CFrame.new(-253.30348205566406, 11262.8818359375, -237.8885955810547) * CFrame.Angles(0, 1.5707963705062866, 0)
+}
+
+game:GetService("ReplicatedStorage").Events.Teleport:FireServer(unpack(args))
+end
+})
+
+
+Tptab:AddButton({
+	Name = "TP TO Coral Island",
+	Callback = function()
+        local args = {
+        [1] = CFrame.new(-511.994293, 13802.0225, -543.387085, 0.0159184374, 5.11358884e-08, -0.999873281, -1.04936495e-08, 1, 5.09753058e-08, 0.999873281, 9.68087299e-09, 0.0159184374)
+        }
+        game:GetService("ReplicatedStorage").Events.Teleport:FireServer(unpack(args))
+    end        
+})
+
+
+Tptab:AddButton({
+	Name = "TP TO Darkheart Island",
+	Callback = function()
+        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-410.602417, 17170.082, -552.655334, 0.0240757596, -8.50726511e-09, 0.999710143, -4.85964584e-08, 1, 9.68006741e-09, -0.999710143, -4.88154264e-08, 0.0240757596)
+    end        
+})
+
+
+Tptab:AddButton({
+	Name = "TP TO Flamelands World",
+	Callback = function()
+
+    end        
+})
+
+
+plyrtab:AddSlider({
+	Name = "Walk Speed",
+	Min = 0,
+	Max = 200,
+	Default = 20,
+	Color = Color3.fromRGB(255,255,255),
+	Increment = 1,
+	ValueName = "Walk Speed",
+	Callback = function(t)
+        game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = t
+		print(t)
+	end    
+})
+
+
+plyrtab:AddButton({
+	Name = "Reset Walk Speed",
+	Callback = function()
+    game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = 20
+    game.Players.LocalPlayer.Character.Humanoid.JumpPower = 50 
+    OrionLib:MakeNotification({
+        Name = "Walk Speed",
+        Content = "You are Normal Again now",
+        Image = "rbxassetid://4483345998",
+        Time = 5
+    })
+  	end    
+})
